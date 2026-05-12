@@ -1,0 +1,42 @@
+name: wiseft_v2
+channels:
+  - pytorch
+  - nvidia
+  - pyg
+  - defaults
+dependencies:
+  - python=3.10
+  - pytorch
+  - torchvision
+  - torchaudio
+  - pytorch-cuda=12.1
+  - faiss-gpu
+  - pyg
+  - pytorch-scatter
+  - pytorch-sparse
+  - pip
+  - pip:
+    - numpy
+    - scipy
+    - scikit-learn
+    - pandas
+    - pillow
+    - click
+    - tqdm
+    - tensorboard
+    - cython
+    - cryptography
+    - grpcio
+    - regex
+    - wilds>=2.0.0
+    - wandb
+    - ogb
+    - h5py
+    - matplotlib
+    - networkx
+    - numba
+    - pyarrow
+    - pyyaml
+    - rdflib
+    - sentry-sdk
+    - git+https://github.com/modestyachts/ImageNetV2_pytorch.git

@@ -1,0 +1,130 @@
+import os
+import torch
+import torchvision
+from torch.utils.data import DataLoader
+
+class Caltech101:
+    def __init__(self,
+                 preprocess,
+                 location=os.path.expanduser('~/data'),
+                 batch_size=128,
+                 num_workers=16,
+                 classnames=None):
+
+        self.test_dataset = torchvision.datasets.Caltech101(
+            root=location, download=False, transform=preprocess
+        )
+
+        use_cuda = torch.cuda.is_available()
+        kwargs = {"num_workers": num_workers, "pin_memory": True} if use_cuda else {"num_workers": num_workers}
+
+        self.test_loader = torch.utils.data.DataLoader(
+            self.test_dataset, batch_size=batch_size, shuffle=False, **kwargs
+        )
+
+        self.train_dataset = self.test_dataset
+        self.train_loader = self.test_loader
+
+        self.classnames = [
+            'off-center face',
+            'centered face',
+            'leopard',
+            'motorbike',
+            'accordion',
+            'airplane',
+            'anchor',
+            'ant',
+            'barrel',
+            'bass',
+            'beaver',
+            'binocular',
+            'bonsai',
+            'brain',
+            'brontosaurus',
+            'buddha',
+            'butterfly',
+            'camera',
+            'cannon',
+            'side of a car',
+            'ceiling fan',
+            'cellphone',
+            'chair',
+            'chandelier',
+            'body of a cougar cat',
+            'face of a cougar cat',
+            'crab',
+            'crayfish',
+            'crocodile',
+            'head of a  crocodile',
+            'cup',
+            'dalmatian',
+            'dollar bill',
+            'dolphin',
+            'dragonfly',
+            'electric guitar',
+            'elephant',
+            'emu',
+            'euphonium',
+            'ewer',
+            'ferry',
+            'flamingo',
+            'head of a flamingo',
+            'garfield',
+            'gerenuk',
+            'gramophone',
+            'grand piano',
+            'hawksbill',
+            'headphone',
+            'hedgehog',
+            'helicopter',
+            'ibis',
+            'inline skate',
+            'joshua tree',
+            'kangaroo',
+            'ketch',
+            'lamp',
+            'laptop',
+            'llama',
+            'lobster',
+            'lotus',
+            'mandolin',
+            'mayfly',
+            'menorah',
+            'metronome',
+            'minaret',
+            'nautilus',
+            'octopus',
+            'okapi',
+            'pagoda',
+            'panda',
+            'pigeon',
+            'pizza',
+            'platypus',
+            'pyramid',
+            'revolver',
+            'rhino',
+            'rooster',
+            'saxophone',
+            'schooner',
+            'scissors',
+            'scorpion',
+            'sea horse',
+            'snoopy (cartoon beagle)',
+            'soccer ball',
+            'stapler',
+            'starfish',
+            'stegosaurus',
+            'stop sign',
+            'strawberry',
+            'sunflower',
+            'tick',
+            'trilobite',
+            'umbrella',
+            'watch',
+            'water lilly',
+            'wheelchair',
+            'wild cat',
+            'windsor chair',
+            'wrench',
+            'yin and yang symbol'
+        ]
