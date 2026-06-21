@@ -25,14 +25,15 @@ env/
 .DS_Store
 Thumbs.db
 
-# Project artifacts
-cache/
-models/
-representations/
-labels/
-classifier/
-autoencoders/
-logs/
+# Project artifacts (top-level output dirs only — leading slash anchors to repo root
+# so source packages like src/models/ are NOT ignored)
+/cache/
+/models/
+/representations/
+/labels/
+/classifier/
+/autoencoders/
+/logs/
 results.jsonl
 *.dat
 *.pt
